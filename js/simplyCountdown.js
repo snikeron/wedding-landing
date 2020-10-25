@@ -115,10 +115,10 @@
      */
     simplyCountdown = function (elt, args) {
         var parameters = extend({
-                year: 2015,
-                month: 6,
-                day: 28,
-                hours: 0,
+                year: 2020,
+                month: 11,
+                day: 3,
+                hours: 14,
                 minutes: 0,
                 seconds: 0,
                 words: {
@@ -161,6 +161,8 @@
             parameters.minutes,
             parameters.seconds
         );
+
+        console.log(targetTmpDate)
 
         if (parameters.enableUtc) {
             targetDate = new Date(
