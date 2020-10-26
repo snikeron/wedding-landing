@@ -1135,6 +1135,17 @@ form label {
     content: '⬇️'
   }
 }
+.desc-bride span.pointer:before {
+  content: '⬅️'
+}
+@media screen and (max-width: 768px) {
+  .desc-bride span.pointer:before {
+    content: '⬆️'
+  }
+}
+.desc-groom h3, .desc-bride h3 {
+  font-weight: bold;
+}
 
 .feature-center {
   text-align: center;
