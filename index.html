@@ -104,7 +104,7 @@
 	<div id="fh5co-couple">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box count-parent">
 					<h2>When?</h2>
 					<div class="simply-countdown simply-countdown-one"></div>
 					<h3>3rd November, 2020 Melbourne, Australia</h3>
@@ -269,16 +269,32 @@
         year: 2020,
         month: 11,
 		day: 3,
-		enableUtc: false
+		enableUtc: true,
+		onEnd: function() {
+			var animateBox = document.querySelector('.count-parent');
+			var countdownTimer = document.querySelector('.simply-countdown-one');
+			var endDisplay = document.createElement('div');
+			endDisplay.classList.add('married-status');
+			var endDisplayText;
+			if (new Date(new Date().toUTCString()).getTime() > new Date(new Date('Nov 3 2020 4:00 UTC').toUTCString()).getTime()) {
+				// Once passed Nov 3rd 3pm AEST, ceremony ends - we done got married!
+				endDisplayText = '🎉🎉<br /><br />WE\'RE MARRIED!<br /><br />🎊🎊';
+			} else if (new Date(new Date().toUTCString()).getTime() > new Date(new Date('Nov 3 2020 3:00 UTC').toUTCString()).getTime()) {
+				endDisplayText = '🤫⛪<br /><br />Currently Getting Married!<br /><br /><a href="live">Click here to watch.</a>';
+			}
+			endDisplay.innerHTML = endDisplayText;
+			countdownTimer.style.display = 'none';
+			animateBox.insertBefore(endDisplay, countdownTimer);
+		}
     });
 
     //jQuery example
-    $('#simply-countdown-losange').simplyCountdown({
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate(),
-        enableUtc: false
-    });
+    // $('#simply-countdown-losange').simplyCountdown({
+    //     year: d.getFullYear(),
+    //     month: d.getMonth() + 1,
+    //     day: d.getDate(),
+    //     enableUtc: false
+    // });
 </script>
 
 	</body>

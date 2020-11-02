@@ -455,6 +455,12 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 
+.married-status {
+  margin-bottom: 3rem;
+  font-size: 5rem;
+  line-height: 1;
+}
+
 .timeline {
   list-style: none;
   padding: 20px 0 20px;

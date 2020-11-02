@@ -163,17 +163,13 @@
         );
 
         if (parameters.enableUtc) {
-            targetDate = new Date(
-                targetTmpDate.getUTCFullYear(),
-                targetTmpDate.getUTCMonth(),
-                targetTmpDate.getUTCDate(),
-                targetTmpDate.getUTCHours(),
-                targetTmpDate.getUTCMinutes(),
-                targetTmpDate.getUTCSeconds()
-            );
+            targetDate = new Date(Date.UTC(2020, 10, 3, 3, 0, 0, 0));
+            console.log(targetDate)
         } else {
             targetDate = targetTmpDate;
         }
+
+        console.log(targetDate)
 
         Array.prototype.forEach.call(cd, function (countdown) {
             var fullCountDown = createElements(parameters, countdown),
@@ -185,11 +181,10 @@
                     minuteWord,
                     secondWord;
 
-                now = new Date();
+                now = new Date(new Date().toISOString());
                 if (parameters.enableUtc) {
-                    nowUtc = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
-                        now.getHours(), now.getMinutes(), now.getSeconds());
-                    secondsLeft = (targetDate - nowUtc.getTime()) / 1000;
+                    nowUtc = now.getTime();
+                    secondsLeft = (targetDate - nowUtc) / 1000;
 
                 } else {
                     secondsLeft = (targetDate - now.getTime()) / 1000;
