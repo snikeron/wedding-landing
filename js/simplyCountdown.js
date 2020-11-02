@@ -162,8 +162,6 @@
             parameters.seconds
         );
 
-        console.log(targetTmpDate)
-
         if (parameters.enableUtc) {
             targetDate = new Date(
                 targetTmpDate.getUTCFullYear(),
